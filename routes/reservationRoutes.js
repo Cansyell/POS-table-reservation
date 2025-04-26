@@ -17,5 +17,6 @@ router.delete('/:id', reservationController.cancelReservation);
 
 // Endpoint untuk cek ketersediaan waktu reservasi
 router.post('/check-availability', reservationController.checkAvailability);
+router.get('/ongoing', reservationController.getOngoingReservations);
 
 module.exports = router;

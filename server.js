@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const { initCronJobs } = require('./cronjobs'); 
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
@@ -13,6 +14,9 @@ const sequelize = require('./config/database');
 
 // Initialize Express app
 const app = express();
+
+// Inisialisasi cronjob saat aplikasi dimulai
+initCronJobs();
 
 // Middlewares
 app.use(cors());

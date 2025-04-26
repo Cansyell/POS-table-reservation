@@ -2,6 +2,8 @@ const Reservation = require('../models/Reservation');
 const Table = require('../models/Table');
 const User = require('../models/User');
 const { Op, Sequelize } = require('sequelize');
+const now = new Date();
+const currentTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
 
 /**
  * Fungsi untuk memeriksa ketersediaan jadwal reservasi
@@ -330,87 +332,146 @@ exports.checkAvailability = async (req, res) => {
 
 // Mengupdate status reservasi
 exports.updateReservationStatus = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const { status } = req.body;
-      
-      const reservation = await Reservation.findByPk(id);
-      if (!reservation) {
-        return res.status(404).json({ message: 'Reservasi tidak ditemukan' });
-      }
-      
-      // Cek apakah user authorized (admin atau pemilik reservasi)
-      if (req.user.id !== reservation.user_id && req.user.role !== 'admin') {
-        return res.status(403).json({ message: 'Tidak berhak mengupdate reservasi ini' });
-      }
-      
-      // Update status reservasi
-      reservation.status = status;
-      await reservation.save();
-      
-      // Update status meja berdasarkan status reservasi
-      const table = await Table.findByPk(reservation.table_id);
-      if (table) {
-        // Jika status reservasi berubah menjadi 'confirmed', update status meja menjadi 'occupied'
-        if (status === 'confirmed') {
-          // Periksa apakah ini adalah reservasi untuk saat ini
-          const now = new Date();
-          const reservationDate = new Date(reservation.reservation_date);
-          const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-          
-          // Jika reservasi untuk hari ini dan waktunya sudah tiba atau hampir tiba
-          if (
-            reservationDate.getTime() === today.getTime() && 
-            reservation.reservation_time <= now.toTimeString().split(' ')[0]
-          ) {
-            table.status = 'occupied';
-            await table.save();
-          } else {
-            table.status = 'reserve';
-            await table.save();
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    
+    const reservation = await Reservation.findByPk(id);
+    if (!reservation) {
+      return res.status(404).json({ message: 'Reservasi tidak ditemukan' });
+    }
+    
+    // Cek apakah user authorized (admin atau pemilik reservasi)
+    if (req.user.id !== reservation.user_id && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Tidak berhak mengupdate reservasi ini' });
+    }
+    
+    // Update status reservasi
+    reservation.status = status;
+    await reservation.save();
+    
+    // Update status meja berdasarkan status reservasi
+    const table = await Table.findByPk(reservation.table_id);
+    if (table) {
+      // Jika status reservasi berubah menjadi 'confirmed'
+      if (status === 'confirmed') {
+        // Dapatkan waktu sekarang
+        const now = new Date();
+        const currentDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
+        const currentTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
+        
+        // Cek apakah ada reservasi lain yang sedang aktif (occupied) untuk meja ini
+        const activeOccupiedReservation = await Reservation.findOne({
+          where: {
+            table_id: reservation.table_id,
+            id: { [Op.ne]: reservation.id },
+            reservation_date: currentDate,
+            status: 'confirmed',
+            // Reservasi yang sedang berlangsung (waktu mulai <= sekarang <= waktu selesai)
+            [Op.and]: [
+              { reservation_time: { [Op.lte]: currentTime } },
+              Sequelize.literal(`ADDTIME(reservation_time, SEC_TO_TIME(duration * 60)) > '${currentTime}'`)
+            ]
           }
-        }
-        // Jika status reservasi berubah menjadi 'cancelled' atau 'completed', periksa reservasi aktif lainnya
-        else if (status === 'cancelled' || status === 'completed') {
-          // Cek apakah ada reservasi aktif lain untuk meja ini pada waktu yang sama
-          const now = new Date();
-          const currentDate = now.toISOString().split('T')[0];
-          const currentTime = now.toTimeString().split(' ')[0];
+        });
+        
+        // Jika ada reservasi aktif yang sedang occupied, prioritaskan status occupied
+        if (activeOccupiedReservation) {
+          // Tidak mengubah status meja karena ada reservasi active yang occupied
+          console.log(`Meja tetap occupied karena reservasi ${activeOccupiedReservation.id} sedang aktif`);
+        } else {
+          // Hitung selisih waktu dengan waktu reservasi (dalam menit)
+          const reservationDateTime = new Date(`${reservation.reservation_date}T${reservation.reservation_time}`);
+          const diffMinutes = Math.floor((reservationDateTime - now) / (1000 * 60));
           
-          const activeReservation = await Reservation.findOne({
+          // Jika reservasi hari ini dan waktu kurang dari 60 menit dari jadwal atau sudah lewat jadwal
+          if (
+            reservation.reservation_date === currentDate && 
+            (diffMinutes <= 60 || diffMinutes < 0)
+          ) {
+            // Jika pelanggan sudah datang, set status meja menjadi 'occupied'
+            table.status = 'occupied';
+          } else {
+            // Jika reservasi masih lebih dari 60 menit dari sekarang, set status meja menjadi 'reserved'
+            table.status = 'reserved';
+          }
+          
+          await table.save();
+        }
+      }
+      // Jika status reservasi berubah menjadi 'cancelled' atau 'completed'
+      else if (status === 'cancelled' || status === 'completed') {
+        // Dapatkan waktu sekarang
+        const now = new Date();
+        const currentDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
+        const currentTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
+        
+        // Cek apakah ada reservasi aktif lain untuk meja ini yang sedang berlangsung
+        const activeReservation = await Reservation.findOne({
+          where: {
+            table_id: reservation.table_id,
+            id: { [Op.ne]: reservation.id },
+            reservation_date: currentDate,
+            status: 'confirmed',
+            // Reservasi yang sedang berlangsung (waktu mulai <= sekarang <= waktu selesai)
+            [Op.and]: [
+              { reservation_time: { [Op.lte]: currentTime } },
+              Sequelize.literal(`ADDTIME(reservation_time, SEC_TO_TIME(duration * 60)) > '${currentTime}'`)
+            ]
+          }
+        });
+        
+        // Jika tidak ada reservasi aktif yang sedang berlangsung, cek reservasi berikutnya
+        if (!activeReservation) {
+          // Cari reservasi berikutnya pada hari yang sama untuk meja ini
+          const nextReservation = await Reservation.findOne({
             where: {
               table_id: reservation.table_id,
               id: { [Op.ne]: reservation.id },
               reservation_date: currentDate,
               status: 'confirmed',
-              // Reservasi yang sedang berlangsung (waktu mulai <= sekarang <= waktu selesai)
-              [Op.and]: [
-                { reservation_time: { [Op.lte]: currentTime } },
-                Sequelize.literal(`ADDTIME(reservation_time, SEC_TO_TIME(duration * 60)) > '${currentTime}'`)
-              ]
-            }
+              reservation_time: { [Op.gt]: currentTime }
+            },
+            order: [['reservation_time', 'ASC']]
           });
           
-          // Jika tidak ada reservasi aktif lain, kembalikan status meja menjadi available
-          if (!activeReservation) {
+          if (nextReservation) {
+            // Hitung selisih waktu dengan waktu reservasi berikutnya (dalam menit)
+            const nextReservationDateTime = new Date(`${nextReservation.reservation_date}T${nextReservation.reservation_time}`);
+            const diffMinutes = Math.floor((nextReservationDateTime - now) / (1000 * 60));
+            
+            // Jika waktu reservasi berikutnya kurang dari 60 menit dari sekarang
+            if (diffMinutes <= 60) {
+              // Set status meja menjadi 'occupied' karena sudah mendekati waktu reservasi berikutnya
+              table.status = 'occupied';
+            } else {
+              // Jika masih ada waktu lebih dari 60 menit, set status meja menjadi 'reserved'
+              table.status = 'reserved';
+            }
+          } else {
+            // Jika tidak ada reservasi lagi hari ini, set status meja menjadi 'available'
             table.status = 'available';
-            await table.save();
           }
+          
+          await table.save();
         }
       }
-      
-      res.status(200).json({
-        message: 'Status reservasi berhasil diupdate',
-        reservation
-      });
-    } catch (error) {
-      console.error('Error updating reservation status:', error);
-      res.status(500).json({ 
-        message: 'Gagal mengupdate status reservasi', 
-        error: error.message || 'Unknown error'
-      });
     }
-  };
+    
+    res.status(200).json({
+      message: 'Status reservasi berhasil diupdate',
+      reservation,
+      tableStatus: table ? table.status : null
+    });
+
+  } catch (error) {
+    console.error('Error updating reservation status:', error);
+    res.status(500).json({ 
+      message: 'Gagal mengupdate status reservasi', 
+      error: error.message || 'Unknown error'
+    });
+  }
+};
   
 // Fungsi untuk memperbarui status meja berdasarkan jadwal reservasi
 exports.updateTableStatuses = async (req, res) => {
@@ -460,7 +521,7 @@ try {
     for (const reservation of upcomingReservations) {
     const table = await Table.findByPk(reservation.table_id);
     if (table && table.status === 'available') {
-        table.status = 'reserve';
+        table.status = 'reserved';
         await table.save();
     }
     }
@@ -613,4 +674,39 @@ try {
     error: error.message || 'Unknown error'
     });
 }
+};
+
+// 
+exports.getOngoingReservations = async (req, res) => {
+  try {
+    const now = new Date();
+    const today = now.toISOString().split('T')[0]; // Format YYYY-MM-DD
+    const currentTime = now.toTimeString().split(' ')[0]; // Format HH:MM:SS
+
+    const reservations = await Reservation.findAll({
+      where: {
+        reservation_date: today,
+        status: {
+          [Op.notIn]: ['cancelled', 'completed']
+        },
+        [Op.and]: [
+          Sequelize.literal(TIME(reservation_time) <= TIME('${currentTime}')),
+          Sequelize.literal(ADDTIME(reservation_time, SEC_TO_TIME(duration * 60)) > TIME('${currentTime}'))
+        ]
+      },
+      include: [
+        { model: User, attributes: ['id', 'name', 'email', 'phone'] },
+        { model: Table, attributes: ['id', 'table_number', 'capacity'] }
+      ],
+      order: [['reservation_time', 'ASC']]
+    });
+
+    res.status(200).json(reservations);
+  } catch (error) {
+    console.error('Error fetching ongoing reservations:', error);
+    res.status(500).json({ 
+      message: 'Gagal mengambil reservasi yang sedang berlangsung', 
+      error: error.message || 'Unknown error'
+    });
+  }
 };

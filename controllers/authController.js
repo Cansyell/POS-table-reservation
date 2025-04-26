@@ -76,3 +76,25 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: 'Terjadi kesalahan saat login' });
   }
 };
+exports.logout = async (req, res) => {
+  try {
+    // Since JWT is stateless, we cannot invalidate the token server-side
+    // The client needs to remove the token from storage (browser)
+    // For enhanced security, we could implement a token blacklist
+    
+    // For now, we'll just send a successful response
+    res.status(200).json({
+      success: true,
+      message: 'Logout berhasil'
+    });
+
+    // If you want to implement a token blacklist in the future:
+    // 1. Get the token from the request
+    // 2. Add it to a blacklist (Redis or database table)
+    // 3. Set expiry time equal to the remaining time of the token
+    
+  } catch (error) {
+    console.error('Error logging out:', error);
+    res.status(500).json({ message: 'Terjadi kesalahan saat logout' });
+  }
+};
