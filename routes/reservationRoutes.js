@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const reservationController = require('../controllers/reservationController');
-const { protect } = require('../middlewares/authMiddleware');
+
 
 // Protected routes
-router.use(protect); // Semua route di bawah ini memerlukan autentikasi
+// Semua route di bawah ini memerlukan autentikasi
 
 // Endpoint reservasi
 router.post('/', reservationController.createReservation);

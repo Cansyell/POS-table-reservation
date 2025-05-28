@@ -37,3 +37,638 @@
 [2025-04-26 11:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
 [2025-04-26 11:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
 [2025-04-26 11:30:00] Cronjob completed successfully
+[2025-04-27 21:01:59] ===== INITIALIZING CRONJOBS =====
+[2025-04-27 21:01:59] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-27 21:01:59] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-27 21:05:00] Cronjob triggered: update reservation and table status
+[2025-04-27 21:05:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:05:00] Current time: 2025-04-27 21:05:00
+[2025-04-27 21:05:00] Auto-completing expired reservation #27 (Table #7, Time: 2025-04-26 11:15:00)
+[2025-04-27 21:05:00] Auto-completing expired reservation #30 (Table #9, Time: 2025-04-26 12:10:00)
+[2025-04-27 21:05:00] Updated 2 expired reservations to 'completed'
+[2025-04-27 21:05:00] Table #7: occupied -> available (No active or upcoming reservations)
+[2025-04-27 21:05:00] Table #9: occupied -> available (No active or upcoming reservations)
+[2025-04-27 21:05:00] Updated table statuses: 0 occupied, 0 reserved, 2 available
+[2025-04-27 21:05:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:05:00] Cronjob completed successfully
+[2025-04-27 21:10:00] Cronjob triggered: update reservation and table status
+[2025-04-27 21:10:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:10:00] Current time: 2025-04-27 21:10:00
+[2025-04-27 21:10:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 21:10:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 21:10:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:10:00] Cronjob completed successfully
+[2025-04-27 21:15:00] Cronjob triggered: update reservation and table status
+[2025-04-27 21:15:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:15:00] Current time: 2025-04-27 21:15:00
+[2025-04-27 21:15:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 21:15:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 21:15:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:15:00] Cronjob completed successfully
+[2025-04-27 21:20:00] Cronjob triggered: update reservation and table status
+[2025-04-27 21:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:20:00] Current time: 2025-04-27 21:20:00
+[2025-04-27 21:20:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 21:20:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 21:20:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:20:00] Cronjob completed successfully
+[2025-04-27 21:25:00] Cronjob triggered: update reservation and table status
+[2025-04-27 21:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:25:00] Current time: 2025-04-27 21:25:00
+[2025-04-27 21:25:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 21:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 21:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:25:00] Cronjob completed successfully
+[2025-04-27 21:30:00] Cronjob triggered: update reservation and table status
+[2025-04-27 21:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:30:00] Current time: 2025-04-27 21:30:00
+[2025-04-27 21:30:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 21:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 21:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:30:00] Cronjob completed successfully
+[2025-04-27 21:35:00] Cronjob triggered: update reservation and table status
+[2025-04-27 21:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:35:00] Current time: 2025-04-27 21:35:00
+[2025-04-27 21:35:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 21:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 21:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 21:35:00] Cronjob completed successfully
+[2025-04-27 22:12:13] ===== INITIALIZING CRONJOBS =====
+[2025-04-27 22:12:13] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-27 22:12:13] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-27 22:15:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:15:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:15:00] Current time: 2025-04-27 22:15:00
+[2025-04-27 22:15:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:15:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:15:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:15:00] Cronjob completed successfully
+[2025-04-27 22:19:11] ===== INITIALIZING CRONJOBS =====
+[2025-04-27 22:19:11] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-27 22:19:11] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-27 22:20:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:20:00] Current time: 2025-04-27 22:20:00
+[2025-04-27 22:20:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:20:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:20:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:20:00] Cronjob completed successfully
+[2025-04-27 22:25:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:25:00] Current time: 2025-04-27 22:25:00
+[2025-04-27 22:25:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:25:00] Cronjob completed successfully
+[2025-04-27 22:30:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:30:00] Current time: 2025-04-27 22:30:00
+[2025-04-27 22:30:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:30:00] Cronjob completed successfully
+[2025-04-27 22:35:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:35:00] Current time: 2025-04-27 22:35:00
+[2025-04-27 22:35:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:35:00] Cronjob completed successfully
+[2025-04-27 22:38:36] ===== INITIALIZING CRONJOBS =====
+[2025-04-27 22:38:36] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-27 22:38:36] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-27 22:39:46] ===== INITIALIZING CRONJOBS =====
+[2025-04-27 22:39:46] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-27 22:39:46] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-27 22:40:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:40:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:40:00] Current time: 2025-04-27 22:40:00
+[2025-04-27 22:40:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:40:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:40:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:40:00] Cronjob completed successfully
+[2025-04-27 22:45:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:45:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:45:00] Current time: 2025-04-27 22:45:00
+[2025-04-27 22:45:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:45:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:45:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:45:00] Cronjob completed successfully
+[2025-04-27 22:50:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:50:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:50:00] Current time: 2025-04-27 22:50:00
+[2025-04-27 22:50:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:50:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:50:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:50:00] Cronjob completed successfully
+[2025-04-27 22:55:00] Cronjob triggered: update reservation and table status
+[2025-04-27 22:55:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:55:00] Current time: 2025-04-27 22:55:00
+[2025-04-27 22:55:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 22:55:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 22:55:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 22:55:00] Cronjob completed successfully
+[2025-04-27 23:00:00] Cronjob triggered: update reservation and table status
+[2025-04-27 23:00:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:00:00] Current time: 2025-04-27 23:00:00
+[2025-04-27 23:00:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 23:00:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 23:00:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:00:00] Cronjob completed successfully
+[2025-04-27 23:05:00] Cronjob triggered: update reservation and table status
+[2025-04-27 23:05:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:05:00] Current time: 2025-04-27 23:05:00
+[2025-04-27 23:05:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 23:05:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 23:05:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:05:00] Cronjob completed successfully
+[2025-04-27 23:10:00] Cronjob triggered: update reservation and table status
+[2025-04-27 23:10:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:10:00] Current time: 2025-04-27 23:10:00
+[2025-04-27 23:10:00] Updated 0 expired reservations to 'completed'
+[2025-04-27 23:10:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 23:10:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:10:00] Cronjob completed successfully
+[2025-04-27 23:15:02] ===== INITIALIZING CRONJOBS =====
+[2025-04-27 23:15:02] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-27 23:15:02] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-27 23:20:00] Cronjob triggered: update reservation and table status
+[2025-04-27 23:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:20:00] Current time: 2025-04-27 23:20:00
+[2025-04-27 23:20:01] Updated 0 expired reservations to 'completed'
+[2025-04-27 23:20:01] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-27 23:20:01] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-27 23:20:01] Cronjob completed successfully
+[2025-04-27 23:23:40] ===== INITIALIZING CRONJOBS =====
+[2025-04-27 23:23:40] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-27 23:23:40] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 20:14:33] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 20:14:33] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 20:14:33] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 20:15:00] Cronjob triggered: update reservation and table status
+[2025-04-28 20:15:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:15:00] Current time: 2025-04-28 20:15:00
+[2025-04-28 20:15:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 20:15:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 20:15:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:15:00] Cronjob completed successfully
+[2025-04-28 20:20:00] Cronjob triggered: update reservation and table status
+[2025-04-28 20:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:20:00] Current time: 2025-04-28 20:20:00
+[2025-04-28 20:20:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 20:20:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 20:20:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:20:00] Cronjob completed successfully
+[2025-04-28 20:25:00] Cronjob triggered: update reservation and table status
+[2025-04-28 20:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:25:00] Current time: 2025-04-28 20:25:00
+[2025-04-28 20:25:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 20:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 20:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:25:00] Cronjob completed successfully
+[2025-04-28 20:30:00] Cronjob triggered: update reservation and table status
+[2025-04-28 20:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:30:00] Current time: 2025-04-28 20:30:00
+[2025-04-28 20:30:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 20:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 20:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:30:00] Cronjob completed successfully
+[2025-04-28 20:35:00] Cronjob triggered: update reservation and table status
+[2025-04-28 20:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:35:00] Current time: 2025-04-28 20:35:00
+[2025-04-28 20:35:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 20:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 20:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:35:00] Cronjob completed successfully
+[2025-04-28 20:46:04] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 20:46:04] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 20:46:04] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 20:50:00] Cronjob triggered: update reservation and table status
+[2025-04-28 20:50:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:50:00] Current time: 2025-04-28 20:50:00
+[2025-04-28 20:50:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 20:50:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 20:50:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:50:00] Cronjob completed successfully
+[2025-04-28 20:55:00] Cronjob triggered: update reservation and table status
+[2025-04-28 20:55:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:55:00] Current time: 2025-04-28 20:55:00
+[2025-04-28 20:55:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 20:55:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 20:55:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 20:55:00] Cronjob completed successfully
+[2025-04-28 20:56:19] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 20:56:19] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 20:56:19] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 21:00:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:00:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:00:00] Current time: 2025-04-28 21:00:00
+[2025-04-28 21:00:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:00:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:00:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:00:00] Cronjob completed successfully
+[2025-04-28 21:05:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:05:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:05:00] Current time: 2025-04-28 21:05:00
+[2025-04-28 21:05:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:05:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:05:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:05:00] Cronjob completed successfully
+[2025-04-28 21:10:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:10:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:10:00] Current time: 2025-04-28 21:10:00
+[2025-04-28 21:10:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:10:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:10:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:10:00] Cronjob completed successfully
+[2025-04-28 21:12:13] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 21:12:13] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 21:12:13] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 21:12:48] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 21:12:48] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 21:12:48] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 21:15:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:15:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:15:00] Current time: 2025-04-28 21:15:00
+[2025-04-28 21:15:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:15:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:15:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:15:00] Cronjob completed successfully
+[2025-04-28 21:20:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:20:00] Current time: 2025-04-28 21:20:00
+[2025-04-28 21:20:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:20:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:20:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:20:00] Cronjob completed successfully
+[2025-04-28 21:25:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:25:00] Current time: 2025-04-28 21:25:00
+[2025-04-28 21:25:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:25:00] Cronjob completed successfully
+[2025-04-28 21:30:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:30:00] Current time: 2025-04-28 21:30:00
+[2025-04-28 21:30:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:30:00] Cronjob completed successfully
+[2025-04-28 21:35:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:35:00] Current time: 2025-04-28 21:35:00
+[2025-04-28 21:35:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:35:00] Cronjob completed successfully
+[2025-04-28 21:40:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:40:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:40:00] Current time: 2025-04-28 21:40:00
+[2025-04-28 21:40:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:40:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:40:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:40:00] Cronjob completed successfully
+[2025-04-28 21:41:22] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 21:41:22] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 21:41:22] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 21:44:19] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 21:44:19] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 21:44:19] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 21:45:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:45:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:45:00] Current time: 2025-04-28 21:45:00
+[2025-04-28 21:45:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:45:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:45:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:45:00] Cronjob completed successfully
+[2025-04-28 21:50:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:50:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:50:00] Current time: 2025-04-28 21:50:00
+[2025-04-28 21:50:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:50:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:50:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:50:00] Cronjob completed successfully
+[2025-04-28 21:55:00] Cronjob triggered: update reservation and table status
+[2025-04-28 21:55:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:55:00] Current time: 2025-04-28 21:55:00
+[2025-04-28 21:55:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 21:55:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 21:55:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 21:55:00] Cronjob completed successfully
+[2025-04-28 22:00:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:00:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:00:00] Current time: 2025-04-28 22:00:00
+[2025-04-28 22:00:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:00:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:00:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:00:00] Cronjob completed successfully
+[2025-04-28 22:05:31] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 22:05:31] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 22:05:31] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 22:10:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:10:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:10:00] Current time: 2025-04-28 22:10:00
+[2025-04-28 22:10:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:10:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:10:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:10:00] Cronjob completed successfully
+[2025-04-28 22:15:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:15:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:15:00] Current time: 2025-04-28 22:15:00
+[2025-04-28 22:15:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:15:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:15:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:15:00] Cronjob completed successfully
+[2025-04-28 22:20:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:20:00] Current time: 2025-04-28 22:20:00
+[2025-04-28 22:20:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:20:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:20:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:20:00] Cronjob completed successfully
+[2025-04-28 22:25:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:25:00] Current time: 2025-04-28 22:25:00
+[2025-04-28 22:25:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:25:00] Cronjob completed successfully
+[2025-04-28 22:30:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:30:00] Current time: 2025-04-28 22:30:00
+[2025-04-28 22:30:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:30:00] Cronjob completed successfully
+[2025-04-28 22:35:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:35:00] Current time: 2025-04-28 22:35:00
+[2025-04-28 22:35:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:35:00] Cronjob completed successfully
+[2025-04-28 22:40:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:40:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:40:00] Current time: 2025-04-28 22:40:00
+[2025-04-28 22:40:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:40:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:40:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:40:00] Cronjob completed successfully
+[2025-04-28 22:45:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:45:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:45:00] Current time: 2025-04-28 22:45:00
+[2025-04-28 22:45:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:45:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:45:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:45:00] Cronjob completed successfully
+[2025-04-28 22:50:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:50:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:50:00] Current time: 2025-04-28 22:50:00
+[2025-04-28 22:50:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:50:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:50:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:50:00] Cronjob completed successfully
+[2025-04-28 22:55:00] Cronjob triggered: update reservation and table status
+[2025-04-28 22:55:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:55:00] Current time: 2025-04-28 22:55:00
+[2025-04-28 22:55:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 22:55:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 22:55:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 22:55:00] Cronjob completed successfully
+[2025-04-28 23:00:00] Cronjob triggered: update reservation and table status
+[2025-04-28 23:00:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 23:00:00] Current time: 2025-04-28 23:00:00
+[2025-04-28 23:00:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 23:00:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 23:00:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 23:00:00] Cronjob completed successfully
+[2025-04-28 23:00:31] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 23:00:31] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 23:00:31] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 23:03:11] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 23:03:11] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 23:03:11] ===== ALL CRONJOBS INITIALIZED =====
+[2025-04-28 23:05:00] Cronjob triggered: update reservation and table status
+[2025-04-28 23:05:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 23:05:00] Current time: 2025-04-28 23:05:00
+[2025-04-28 23:05:00] Updated 0 expired reservations to 'completed'
+[2025-04-28 23:05:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-04-28 23:05:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-04-28 23:05:00] Cronjob completed successfully
+[2025-04-28 23:06:50] ===== INITIALIZING CRONJOBS =====
+[2025-04-28 23:06:50] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-04-28 23:06:50] ===== ALL CRONJOBS INITIALIZED =====
+[2025-05-19 20:22:25] ===== INITIALIZING CRONJOBS =====
+[2025-05-19 20:22:25] Reservation status update cronjob scheduled (every 5 minutes)
+[2025-05-19 20:22:25] ===== ALL CRONJOBS INITIALIZED =====
+[2025-05-19 20:25:00] Cronjob triggered: update reservation and table status
+[2025-05-19 20:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:25:00] Current time: 2025-05-19 20:25:00
+[2025-05-19 20:25:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 20:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 20:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:25:00] Cronjob completed successfully
+[2025-05-19 20:30:00] Cronjob triggered: update reservation and table status
+[2025-05-19 20:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:30:00] Current time: 2025-05-19 20:30:00
+[2025-05-19 20:30:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 20:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 20:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:30:00] Cronjob completed successfully
+[2025-05-19 20:35:00] Cronjob triggered: update reservation and table status
+[2025-05-19 20:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:35:00] Current time: 2025-05-19 20:35:00
+[2025-05-19 20:35:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 20:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 20:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:35:00] Cronjob completed successfully
+[2025-05-19 20:40:00] Cronjob triggered: update reservation and table status
+[2025-05-19 20:40:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:40:00] Current time: 2025-05-19 20:40:00
+[2025-05-19 20:40:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 20:40:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 20:40:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:40:00] Cronjob completed successfully
+[2025-05-19 20:45:00] Cronjob triggered: update reservation and table status
+[2025-05-19 20:45:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:45:00] Current time: 2025-05-19 20:45:00
+[2025-05-19 20:45:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 20:45:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 20:45:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:45:00] Cronjob completed successfully
+[2025-05-19 20:50:00] Cronjob triggered: update reservation and table status
+[2025-05-19 20:50:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:50:00] Current time: 2025-05-19 20:50:00
+[2025-05-19 20:50:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 20:50:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 20:50:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:50:00] Cronjob completed successfully
+[2025-05-19 20:55:00] Cronjob triggered: update reservation and table status
+[2025-05-19 20:55:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:55:00] Current time: 2025-05-19 20:55:00
+[2025-05-19 20:55:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 20:55:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 20:55:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 20:55:00] Cronjob completed successfully
+[2025-05-19 21:00:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:00:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:00:00] Current time: 2025-05-19 21:00:00
+[2025-05-19 21:00:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:00:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:00:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:00:00] Cronjob completed successfully
+[2025-05-19 21:05:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:05:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:05:00] Current time: 2025-05-19 21:05:00
+[2025-05-19 21:05:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:05:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:05:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:05:00] Cronjob completed successfully
+[2025-05-19 21:10:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:10:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:10:00] Current time: 2025-05-19 21:10:00
+[2025-05-19 21:10:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:10:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:10:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:10:00] Cronjob completed successfully
+[2025-05-19 21:15:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:15:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:15:00] Current time: 2025-05-19 21:15:00
+[2025-05-19 21:15:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:15:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:15:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:15:00] Cronjob completed successfully
+[2025-05-19 21:20:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:20:00] Current time: 2025-05-19 21:20:00
+[2025-05-19 21:20:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:20:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:20:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:20:00] Cronjob completed successfully
+[2025-05-19 21:25:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:25:00] Current time: 2025-05-19 21:25:00
+[2025-05-19 21:25:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:25:00] Cronjob completed successfully
+[2025-05-19 21:30:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:30:00] Current time: 2025-05-19 21:30:00
+[2025-05-19 21:30:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:30:00] Cronjob completed successfully
+[2025-05-19 21:35:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:35:00] Current time: 2025-05-19 21:35:00
+[2025-05-19 21:35:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:35:00] Cronjob completed successfully
+[2025-05-19 21:40:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:40:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:40:00] Current time: 2025-05-19 21:40:00
+[2025-05-19 21:40:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:40:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:40:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:40:00] Cronjob completed successfully
+[2025-05-19 21:45:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:45:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:45:00] Current time: 2025-05-19 21:45:00
+[2025-05-19 21:45:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:45:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:45:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:45:00] Cronjob completed successfully
+[2025-05-19 21:50:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:50:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:50:00] Current time: 2025-05-19 21:50:00
+[2025-05-19 21:50:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:50:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:50:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:50:00] Cronjob completed successfully
+[2025-05-19 21:55:00] Cronjob triggered: update reservation and table status
+[2025-05-19 21:55:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:55:00] Current time: 2025-05-19 21:55:00
+[2025-05-19 21:55:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 21:55:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 21:55:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 21:55:00] Cronjob completed successfully
+[2025-05-19 22:00:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:00:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:00:00] Current time: 2025-05-19 22:00:00
+[2025-05-19 22:00:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:00:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:00:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:00:00] Cronjob completed successfully
+[2025-05-19 22:05:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:05:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:05:00] Current time: 2025-05-19 22:05:00
+[2025-05-19 22:05:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:05:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:05:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:05:00] Cronjob completed successfully
+[2025-05-19 22:10:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:10:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:10:00] Current time: 2025-05-19 22:10:00
+[2025-05-19 22:10:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:10:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:10:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:10:00] Cronjob completed successfully
+[2025-05-19 22:15:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:15:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:15:00] Current time: 2025-05-19 22:15:00
+[2025-05-19 22:15:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:15:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:15:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:15:00] Cronjob completed successfully
+[2025-05-19 22:20:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:20:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:20:00] Current time: 2025-05-19 22:20:00
+[2025-05-19 22:20:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:20:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:20:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:20:00] Cronjob completed successfully
+[2025-05-19 22:25:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:25:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:25:00] Current time: 2025-05-19 22:25:00
+[2025-05-19 22:25:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:25:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:25:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:25:00] Cronjob completed successfully
+[2025-05-19 22:30:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:30:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:30:00] Current time: 2025-05-19 22:30:00
+[2025-05-19 22:30:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:30:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:30:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:30:00] Cronjob completed successfully
+[2025-05-19 22:35:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:35:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:35:00] Current time: 2025-05-19 22:35:00
+[2025-05-19 22:35:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:35:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:35:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:35:00] Cronjob completed successfully
+[2025-05-19 22:40:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:40:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:40:00] Current time: 2025-05-19 22:40:00
+[2025-05-19 22:40:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:40:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:40:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:40:00] Cronjob completed successfully
+[2025-05-19 22:45:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:45:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:45:00] Current time: 2025-05-19 22:45:00
+[2025-05-19 22:45:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:45:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:45:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:45:00] Cronjob completed successfully
+[2025-05-19 22:50:00] Cronjob triggered: update reservation and table status
+[2025-05-19 22:50:00] ===== CRONJOB STARTED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:50:00] Current time: 2025-05-19 22:50:00
+[2025-05-19 22:50:00] Updated 0 expired reservations to 'completed'
+[2025-05-19 22:50:00] Updated table statuses: 0 occupied, 0 reserved, 0 available
+[2025-05-19 22:50:00] ===== CRONJOB COMPLETED: UPDATE RESERVATION AND TABLE STATUS =====
+[2025-05-19 22:50:00] Cronjob completed successfully

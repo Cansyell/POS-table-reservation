@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const User = require('./User');
 const Table = require('./Table');
 
 const Reservation = sequelize.define('Reservation', {
@@ -11,10 +10,7 @@ const Reservation = sequelize.define('Reservation', {
   },
   user_id: {
     type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id'
-    }
+    allowNull: false
   },
   table_id: {
     type: DataTypes.INTEGER,
@@ -34,7 +30,7 @@ const Reservation = sequelize.define('Reservation', {
   duration: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    defaultValue: 60 // 60 menit
+    defaultValue: 60
   },
   guest_count: {
     type: DataTypes.INTEGER,
@@ -55,9 +51,6 @@ const Reservation = sequelize.define('Reservation', {
 });
 
 // Hubungan antar model
-User.hasMany(Reservation, { foreignKey: 'user_id' });
-Reservation.belongsTo(User, { foreignKey: 'user_id' });
-
 Table.hasMany(Reservation, { foreignKey: 'table_id' });
 Reservation.belongsTo(Table, { foreignKey: 'table_id' });
 

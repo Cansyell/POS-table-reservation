@@ -1,6 +1,5 @@
 const Reservation = require('../models/Reservation');
 const Table = require('../models/Table');
-const User = require('../models/User');
 const { Op, Sequelize } = require('sequelize');
 const now = new Date();
 const currentTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
@@ -92,8 +91,28 @@ const checkReservationAvailability = async (table_id, reservation_date, reservat
 exports.createReservation = async (req, res) => {
   try {
     const { table_id, reservation_date, reservation_time, duration, guest_count, notes } = req.body;
-    const user_id = req.user.id; // Dari middleware auth
     
+    // Ambil token dari request (biasanya dari Authorization header)
+    const token = req.headers.authorization?.split(' ')[1]; // Format 'Bearer token'
+
+    if (!token) {
+      return res.status(401).json({ message: 'Token tidak ditemukan' });
+    }
+
+    // Request ke Auth Service lewat API Gateway
+    const authResponse = await axios.get('http://localhost:3000/getUser', {
+      headers: {
+        Authorization: `${token}`
+      }
+    });
+
+    const user = authResponse.data.user; // Sesuaikan dengan response dari Auth Service kamu
+    if (!user) {
+      return res.status(401).json({ message: 'User tidak valid' });
+    }
+
+    const user_id = user.id;
+
     // Cek keberadaan meja
     const table = await Table.findByPk(table_id);
     if (!table) {
@@ -105,7 +124,7 @@ exports.createReservation = async (req, res) => {
       return res.status(400).json({ message: `Kapasitas meja hanya ${table.capacity} orang` });
     }
     
-    // Cek ketersediaan jadwal reservasi (overlap check)
+    // Cek ketersediaan jadwal reservasi
     const availabilityCheck = await checkReservationAvailability(
       table_id, 
       reservation_date, 
@@ -129,18 +148,15 @@ exports.createReservation = async (req, res) => {
       status: 'pending'
     });
     
-    // Status meja tidak perlu diubah saat reservasi dibuat untuk jadwal di masa depan
-    // Status meja tetap 'available' sampai mendekati atau saat jadwal reservasi tiba
-    
     res.status(201).json({
       message: 'Reservasi berhasil dibuat',
       reservation
     });
   } catch (error) {
-    console.error('Error creating reservation:', error);
+    console.error('Error creating reservation:', error.response?.data || error.message);
     res.status(500).json({ 
       message: 'Gagal membuat reservasi', 
-      error: error.message || 'Unknown error'
+      error: error.response?.data || error.message || 'Unknown error'
     });
   }
 };
@@ -150,7 +166,6 @@ exports.getAllReservations = async (req, res) => {
   try {
     const reservations = await Reservation.findAll({
       include: [
-        { model: User, attributes: ['id', 'name', 'email', 'phone'] },
         { model: Table, attributes: ['id', 'table_number', 'capacity'] }
       ],
       order: [['reservation_date', 'ASC'], ['reservation_time', 'ASC']]

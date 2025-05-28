@@ -5,7 +5,6 @@ require('dotenv').config();
 const { initCronJobs } = require('./cronjobs'); 
 
 // Import routes
-const authRoutes = require('./routes/authRoutes');
 const tableRoutes = require('./routes/tableRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
 
@@ -20,11 +19,11 @@ initCronJobs();
 
 // Middlewares
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/auth', authRoutes);
 app.use('/api/tables', tableRoutes);
 app.use('/api/reservations', reservationRoutes);
 
@@ -32,7 +31,9 @@ app.use('/api/reservations', reservationRoutes);
 app.get('/', (req, res) => {
   res.send('API Coffee Shop Reservation is running!');
 });
-
+app.get('/test', (req, res) => {
+  res.json({ message: 'API Gateway is working' });
+});
 // Port
 const PORT = process.env.PORT || 3000;
 
