@@ -8,9 +8,9 @@ const Table = sequelize.define('Table', {
     autoIncrement: true
   },
   table_number: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    unique: true
+  type: DataTypes.INTEGER,
+  allowNull: false,
+  unique: 'table_number_unique'
   },
   capacity: {
     type: DataTypes.INTEGER,

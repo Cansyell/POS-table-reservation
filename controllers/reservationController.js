@@ -2,6 +2,7 @@ const Reservation = require('../models/Reservation');
 const Table = require('../models/Table');
 const { Op, Sequelize } = require('sequelize');
 const now = new Date();
+const axios = require('axios');
 const currentTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
 
 /**
@@ -92,21 +93,41 @@ exports.createReservation = async (req, res) => {
   try {
     const { table_id, reservation_date, reservation_time, duration, guest_count, notes } = req.body;
     
-    // Ambil token dari request (biasanya dari Authorization header)
-    const token = req.headers.authorization?.split(' ')[1]; // Format 'Bearer token'
+    // Debug: Log semua headers yang diterima
+    console.log('All headers:', req.headers);
+    console.log('Authorization header:', req.headers.authorization);
+    
+    // Ambil token dari Authorization header
+    const authHeader = req.headers.authorization;
+    let token;
 
-    if (!token) {
-      return res.status(401).json({ message: 'Token tidak ditemukan' });
+    if (!authHeader) {
+      return res.status(401).json({ message: 'Authorization header tidak ditemukan' });
     }
 
+    // Cek apakah format Bearer token atau langsung token
+    if (authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    } else {
+      // Jika tidak ada 'Bearer ', anggap header langsung berisi token
+      token = authHeader;
+    }
+
+    if (!token) {
+      return res.status(401).json({ message: 'Token tidak ditemukan dalam Authorization header' });
+    }
+
+    console.log('Extracted token:', token);
+
     // Request ke Auth Service lewat API Gateway
-    const authResponse = await axios.get('http://localhost:3000/getUser', {
+    // Pastikan format Authorization header sesuai dengan yang diharapkan Auth Service
+    const authResponse = await axios.get('http://localhost:3000/auth/getUser', {
       headers: {
-        Authorization: `${token}`
+        Authorization: authHeader // Kirim header authorization yang sama
       }
     });
 
-    const user = authResponse.data.user; // Sesuaikan dengan response dari Auth Service kamu
+    const user = authResponse.data.user;
     if (!user) {
       return res.status(401).json({ message: 'User tidak valid' });
     }
@@ -154,9 +175,18 @@ exports.createReservation = async (req, res) => {
     });
   } catch (error) {
     console.error('Error creating reservation:', error.response?.data || error.message);
+    
+    // Jika error dari Auth Service, kirim response yang lebih detail
+    if (error.response) {
+      return res.status(error.response.status).json({
+        message: 'Gagal memverifikasi user',
+        error: error.response.data
+      });
+    }
+    
     res.status(500).json({ 
       message: 'Gagal membuat reservasi', 
-      error: error.response?.data || error.message || 'Unknown error'
+      error: error.message || 'Unknown error'
     });
   }
 };
@@ -184,27 +214,39 @@ exports.getAllReservations = async (req, res) => {
 // Mendapatkan reservasi berdasarkan ID
 exports.getReservationById = async (req, res) => {
   try {
-    const { id } = req.params;
-    
-    const reservation = await Reservation.findByPk(id, {
+    console.log('=== RESERVATION SERVICE DEBUG ===');
+    console.log('All headers:', req.headers);
+    console.log('x-user-id header:', req.headers['x-user-id']);
+
+    const user_id = req.headers['x-user-id'];
+    const reservationId = req.params.id;
+
+    if (!user_id) {
+      return res.status(401).json({ message: 'User ID tidak ditemukan dalam header' });
+    }
+
+    // Cari reservasi berdasarkan ID
+    const reservation = await Reservation.findOne({
+      where: {
+        id: reservationId,
+        user_id: user_id // Pastikan reservasi milik user yang sama
+      },
       include: [
-        { model: User, attributes: ['id', 'name', 'email', 'phone'] },
         { model: Table, attributes: ['id', 'table_number', 'capacity'] }
       ]
     });
-    
+
     if (!reservation) {
-      return res.status(404).json({ message: 'Reservasi tidak ditemukan' });
+      return res.status(404).json({ message: 'Reservasi tidak ditemukan atau tidak dimiliki oleh user ini' });
     }
-    
-    // Cek apakah user authorized (admin atau pemilik reservasi)
-    if (req.user.id !== reservation.user_id && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Tidak berhak mengakses reservasi ini' });
-    }
-    
-    res.status(200).json(reservation);
+
+    res.status(200).json({
+      message: 'Data reservasi berhasil diambil',
+      reservation
+    });
+
   } catch (error) {
-    console.error('Error fetching reservation:', error);
+    console.error('Error fetching reservation by ID:', error.message);
     res.status(500).json({ 
       message: 'Gagal mengambil data reservasi', 
       error: error.message || 'Unknown error'
@@ -212,11 +254,21 @@ exports.getReservationById = async (req, res) => {
   }
 };
 
+
+
 // Mendapatkan reservasi berdasarkan user
 exports.getUserReservations = async (req, res) => {
   try {
-    const user_id = req.user.id;
-    
+    console.log('=== RESERVATION SERVICE DEBUG ===');
+    console.log('All headers:', req.headers);
+    console.log('x-user-id header:', req.headers['x-user-id']);
+
+    const user_id = req.headers['x-user-id'];
+
+    if (!user_id) {
+      return res.status(401).json({ message: 'User ID tidak ditemukan dalam header' });
+    }
+
     const reservations = await Reservation.findAll({
       where: { user_id },
       include: [
@@ -224,10 +276,14 @@ exports.getUserReservations = async (req, res) => {
       ],
       order: [['reservation_date', 'ASC'], ['reservation_time', 'ASC']]
     });
-    
-    res.status(200).json(reservations);
+
+    res.status(200).json({
+      message: 'Data reservasi berhasil diambil',
+      reservations
+    });
+
   } catch (error) {
-    console.error('Error fetching user reservations:', error);
+    console.error('Error fetching user reservations:', error.message);
     res.status(500).json({ 
       message: 'Gagal mengambil data reservasi pengguna', 
       error: error.message || 'Unknown error'
@@ -238,26 +294,64 @@ exports.getUserReservations = async (req, res) => {
 // Mengupdate data reservasi
 exports.updateReservation = async (req, res) => {
   try {
+    // Debug: Log headers dan Authorization
+    console.log('All headers:', req.headers);
+    console.log('Authorization header:', req.headers.authorization);
+    console.log('Request body:', req.body);
+
+    // Ambil token dari Authorization header
+    const authHeader = req.headers.authorization;
+    let token;
+
+    if (!authHeader) {
+      return res.status(401).json({ message: 'Authorization header tidak ditemukan' });
+    }
+
+    if (authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    } else {
+      token = authHeader;
+    }
+
+    if (!token) {
+      return res.status(401).json({ message: 'Token tidak ditemukan dalam Authorization header' });
+    }
+
+    console.log('Extracted token:', token);
+
+    // Request ke Auth Service untuk verifikasi user
+    const authResponse = await axios.get('http://localhost:3000/auth/getUser', {
+      headers: {
+        Authorization: authHeader
+      }
+    });
+
+    const user = authResponse.data.user;
+    if (!user) {
+      return res.status(401).json({ message: 'User tidak valid' });
+    }
+
+    // Dapatkan ID reservasi dan data update
     const { id } = req.params;
     const { table_id, reservation_date, reservation_time, duration, guest_count, notes } = req.body;
-    
-    // Cek apakah reservasi ada
+
+    // Cari reservasi
     const reservation = await Reservation.findByPk(id);
     if (!reservation) {
       return res.status(404).json({ message: 'Reservasi tidak ditemukan' });
     }
-    
-    // Cek apakah user authorized (admin atau pemilik reservasi)
-    if (req.user.id !== reservation.user_id && req.user.role !== 'admin') {
+
+    // Validasi user: hanya admin atau pemilik reservasi yang boleh update
+    if (user.id !== reservation.user_id && user.role !== 'admin') {
       return res.status(403).json({ message: 'Tidak berhak mengupdate reservasi ini' });
     }
-    
-    // Cek apakah reservasi sudah selesai atau dibatalkan
+
+    // Validasi status reservasi
     if (reservation.status === 'completed' || reservation.status === 'cancelled') {
       return res.status(400).json({ message: `Reservasi sudah ${reservation.status}, tidak dapat diupdate` });
     }
-    
-    // Jika ganti meja, cek keberadaan meja baru
+
+    // Validasi keberadaan meja baru jika ada perubahan
     let table = null;
     if (table_id && table_id !== reservation.table_id) {
       table = await Table.findByPk(table_id);
@@ -265,31 +359,35 @@ exports.updateReservation = async (req, res) => {
         return res.status(404).json({ message: 'Meja tidak ditemukan' });
       }
     } else {
-      // Gunakan meja yang sama
       table = await Table.findByPk(reservation.table_id);
     }
-    
-    // Validasi kapasitas jika guest_count berubah
+
+    // Validasi kapasitas meja
     if (guest_count && guest_count > table.capacity) {
       return res.status(400).json({ message: `Kapasitas meja hanya ${table.capacity} orang` });
     }
-    
-    // Cek ketersediaan jadwal jika waktu/tanggal/durasi diubah
-    if (reservation_date || reservation_time || duration || (table_id && table_id !== reservation.table_id)) {
+
+    // Cek ketersediaan jadwal reservasi jika ada perubahan waktu/tanggal/durasi/meja
+    if (
+      reservation_date ||
+      reservation_time ||
+      duration ||
+      (table_id && table_id !== reservation.table_id)
+    ) {
       const availabilityCheck = await checkReservationAvailability(
         table_id || reservation.table_id,
         reservation_date || reservation.reservation_date,
         reservation_time || reservation.reservation_time,
         duration || reservation.duration,
-        id // Kirim ID reservasi yang sedang diupdate untuk dikecualikan dari pengecekan
+        id // exclude current reservation
       );
-      
+
       if (!availabilityCheck.isAvailable) {
         return res.status(400).json({ message: availabilityCheck.message });
       }
     }
-    
-    // Update reservasi
+
+    // Update data reservasi
     const updatedFields = {};
     if (table_id) updatedFields.table_id = table_id;
     if (reservation_date) updatedFields.reservation_date = reservation_date;
@@ -297,28 +395,35 @@ exports.updateReservation = async (req, res) => {
     if (duration) updatedFields.duration = duration;
     if (guest_count) updatedFields.guest_count = guest_count;
     if (notes !== undefined) updatedFields.notes = notes;
-    
+
     await reservation.update(updatedFields);
-    
-    // Ambil data reservasi yang telah diupdate
+
+    // Ambil data reservasi yang sudah diupdate
     const updatedReservation = await Reservation.findByPk(id, {
-      include: [
-        { model: Table, attributes: ['id', 'table_number', 'capacity'] }
-      ]
+      include: [{ model: Table, attributes: ['id', 'table_number', 'capacity'] }]
     });
-    
+
     res.status(200).json({
       message: 'Reservasi berhasil diupdate',
       reservation: updatedReservation
     });
   } catch (error) {
-    console.error('Error updating reservation:', error);
-    res.status(500).json({ 
-      message: 'Gagal mengupdate reservasi', 
+    console.error('Error updating reservation:', error.response?.data || error.message);
+
+    if (error.response) {
+      return res.status(error.response.status).json({
+        message: 'Gagal memverifikasi user atau mengupdate reservasi',
+        error: error.response.data
+      });
+    }
+
+    res.status(500).json({
+      message: 'Gagal mengupdate reservasi',
       error: error.message || 'Unknown error'
     });
   }
 };
+
 
 // Endpoint untuk cek ketersediaan (untuk frontend)
 exports.checkAvailability = async (req, res) => {
@@ -348,97 +453,114 @@ exports.checkAvailability = async (req, res) => {
 // Mengupdate status reservasi
 exports.updateReservationStatus = async (req, res) => {
   try {
+    console.log('=== RESERVATION SERVICE UPDATE STATUS DEBUG ===');
+    console.log('All headers:', req.headers);
+    console.log('Authorization header:', req.headers.authorization);
+    console.log('Request body:', req.body);
+
     const { id } = req.params;
     const { status } = req.body;
-    
+
+    // Ambil token dari Authorization header
+    const authHeader = req.headers.authorization;
+    let token;
+
+    if (!authHeader) {
+      return res.status(401).json({ message: 'Authorization header tidak ditemukan' });
+    }
+
+    // Cek apakah format Bearer token atau langsung token
+    if (authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    } else {
+      // Jika tidak ada 'Bearer ', anggap header langsung berisi token
+      token = authHeader;
+    }
+
+    if (!token) {
+      return res.status(401).json({ message: 'Token tidak ditemukan dalam Authorization header' });
+    }
+
+    console.log('Extracted token:', token);
+
+    // Request ke Auth Service lewat API Gateway
+    // Pastikan format Authorization header sesuai dengan yang diharapkan Auth Service
+    const authResponse = await axios.get('http://localhost:3000/auth/getUser', {
+      headers: {
+        Authorization: authHeader // Kirim header authorization yang sama
+      }
+    });
+
+    const user = authResponse.data.user;
+    if (!user) {
+      return res.status(401).json({ message: 'User tidak valid' });
+    }
+
+    const user_id = user.id;
+
+    // Cari reservasi
     const reservation = await Reservation.findByPk(id);
     if (!reservation) {
       return res.status(404).json({ message: 'Reservasi tidak ditemukan' });
     }
-    
+
     // Cek apakah user authorized (admin atau pemilik reservasi)
-    if (req.user.id !== reservation.user_id && req.user.role !== 'admin') {
+    if (user.id !== reservation.user_id && user.role !== 'admin') {
       return res.status(403).json({ message: 'Tidak berhak mengupdate reservasi ini' });
     }
-    
+
     // Update status reservasi
     reservation.status = status;
     await reservation.save();
-    
-    // Update status meja berdasarkan status reservasi
+
+    // Update status meja sesuai logika
     const table = await Table.findByPk(reservation.table_id);
     if (table) {
-      // Jika status reservasi berubah menjadi 'confirmed'
+      const now = new Date();
+      const currentDate = now.toISOString().split('T')[0];
+      const currentTime = now.toTimeString().split(' ')[0];
+
       if (status === 'confirmed') {
-        // Dapatkan waktu sekarang
-        const now = new Date();
-        const currentDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
-        const currentTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
-        
-        // Cek apakah ada reservasi lain yang sedang aktif (occupied) untuk meja ini
         const activeOccupiedReservation = await Reservation.findOne({
           where: {
             table_id: reservation.table_id,
             id: { [Op.ne]: reservation.id },
             reservation_date: currentDate,
             status: 'confirmed',
-            // Reservasi yang sedang berlangsung (waktu mulai <= sekarang <= waktu selesai)
             [Op.and]: [
               { reservation_time: { [Op.lte]: currentTime } },
               Sequelize.literal(`ADDTIME(reservation_time, SEC_TO_TIME(duration * 60)) > '${currentTime}'`)
             ]
           }
         });
-        
-        // Jika ada reservasi aktif yang sedang occupied, prioritaskan status occupied
+
         if (activeOccupiedReservation) {
-          // Tidak mengubah status meja karena ada reservasi active yang occupied
           console.log(`Meja tetap occupied karena reservasi ${activeOccupiedReservation.id} sedang aktif`);
         } else {
-          // Hitung selisih waktu dengan waktu reservasi (dalam menit)
           const reservationDateTime = new Date(`${reservation.reservation_date}T${reservation.reservation_time}`);
           const diffMinutes = Math.floor((reservationDateTime - now) / (1000 * 60));
-          
-          // Jika reservasi hari ini dan waktu kurang dari 60 menit dari jadwal atau sudah lewat jadwal
-          if (
-            reservation.reservation_date === currentDate && 
-            (diffMinutes <= 60 || diffMinutes < 0)
-          ) {
-            // Jika pelanggan sudah datang, set status meja menjadi 'occupied'
+          if (reservation.reservation_date === currentDate && (diffMinutes <= 60 || diffMinutes < 0)) {
             table.status = 'occupied';
           } else {
-            // Jika reservasi masih lebih dari 60 menit dari sekarang, set status meja menjadi 'reserved'
             table.status = 'reserved';
           }
-          
           await table.save();
         }
-      }
-      // Jika status reservasi berubah menjadi 'cancelled' atau 'completed'
-      else if (status === 'cancelled' || status === 'completed') {
-        // Dapatkan waktu sekarang
-        const now = new Date();
-        const currentDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
-        const currentTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
-        
-        // Cek apakah ada reservasi aktif lain untuk meja ini yang sedang berlangsung
+      } else if (status === 'cancelled' || status === 'completed') {
         const activeReservation = await Reservation.findOne({
           where: {
             table_id: reservation.table_id,
             id: { [Op.ne]: reservation.id },
             reservation_date: currentDate,
             status: 'confirmed',
-            // Reservasi yang sedang berlangsung (waktu mulai <= sekarang <= waktu selesai)
             [Op.and]: [
               { reservation_time: { [Op.lte]: currentTime } },
               Sequelize.literal(`ADDTIME(reservation_time, SEC_TO_TIME(duration * 60)) > '${currentTime}'`)
             ]
           }
         });
-        
-        // Jika tidak ada reservasi aktif yang sedang berlangsung, cek reservasi berikutnya
+
         if (!activeReservation) {
-          // Cari reservasi berikutnya pada hari yang sama untuk meja ini
           const nextReservation = await Reservation.findOne({
             where: {
               table_id: reservation.table_id,
@@ -449,30 +571,23 @@ exports.updateReservationStatus = async (req, res) => {
             },
             order: [['reservation_time', 'ASC']]
           });
-          
+
           if (nextReservation) {
-            // Hitung selisih waktu dengan waktu reservasi berikutnya (dalam menit)
             const nextReservationDateTime = new Date(`${nextReservation.reservation_date}T${nextReservation.reservation_time}`);
             const diffMinutes = Math.floor((nextReservationDateTime - now) / (1000 * 60));
-            
-            // Jika waktu reservasi berikutnya kurang dari 60 menit dari sekarang
             if (diffMinutes <= 60) {
-              // Set status meja menjadi 'occupied' karena sudah mendekati waktu reservasi berikutnya
               table.status = 'occupied';
             } else {
-              // Jika masih ada waktu lebih dari 60 menit, set status meja menjadi 'reserved'
               table.status = 'reserved';
             }
           } else {
-            // Jika tidak ada reservasi lagi hari ini, set status meja menjadi 'available'
             table.status = 'available';
           }
-          
           await table.save();
         }
       }
     }
-    
+
     res.status(200).json({
       message: 'Status reservasi berhasil diupdate',
       reservation,
@@ -480,13 +595,23 @@ exports.updateReservationStatus = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error updating reservation status:', error);
-    res.status(500).json({ 
-      message: 'Gagal mengupdate status reservasi', 
+    console.error('Error updating reservation status:', error.response?.data || error.message);
+    
+    // Jika error dari Auth Service, kirim response yang lebih detail
+    if (error.response) {
+      return res.status(error.response.status).json({
+        message: 'Gagal memverifikasi user',
+        error: error.response.data
+      });
+    }
+    
+    res.status(500).json({
+      message: 'Gagal mengupdate status reservasi',
       error: error.message || 'Unknown error'
     });
   }
 };
+
   
 // Fungsi untuk memperbarui status meja berdasarkan jadwal reservasi
 exports.updateTableStatuses = async (req, res) => {
@@ -621,74 +746,122 @@ try {
 
 // Membatalkan reservasi
 exports.cancelReservation = async (req, res) => {
-try {
+  try {
+    console.log('=== RESERVATION SERVICE CANCEL DEBUG ===');
+    console.log('All headers:', req.headers);
+    console.log('Authorization header:', req.headers.authorization);
+
     const { id } = req.params;
-    
+
+    // Ambil token dari Authorization header
+    const authHeader = req.headers.authorization;
+    let token;
+
+    if (!authHeader) {
+      return res.status(401).json({ message: 'Authorization header tidak ditemukan' });
+    }
+
+    // Cek apakah format Bearer token atau langsung token
+    if (authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    } else {
+      // Jika tidak ada 'Bearer ', anggap header langsung berisi token
+      token = authHeader;
+    }
+
+    if (!token) {
+      return res.status(401).json({ message: 'Token tidak ditemukan dalam Authorization header' });
+    }
+
+    console.log('Extracted token:', token);
+
+    // Request ke Auth Service lewat API Gateway
+    // Pastikan format Authorization header sesuai dengan yang diharapkan Auth Service
+    const authResponse = await axios.get('http://localhost:3000/auth/getUser', {
+      headers: {
+        Authorization: authHeader // Kirim header authorization yang sama
+      }
+    });
+
+    const user = authResponse.data.user;
+    if (!user) {
+      return res.status(401).json({ message: 'User tidak valid' });
+    }
+
     const reservation = await Reservation.findByPk(id);
     if (!reservation) {
-    return res.status(404).json({ message: 'Reservasi tidak ditemukan' });
+      return res.status(404).json({ message: 'Reservasi tidak ditemukan' });
     }
-    
+
     // Cek apakah user authorized (admin atau pemilik reservasi)
-    if (req.user.id !== reservation.user_id && req.user.role !== 'admin') {
-    return res.status(403).json({ message: 'Tidak berhak membatalkan reservasi ini' });
+    if (user.id !== reservation.user_id && user.role !== 'admin') {
+      return res.status(403).json({ message: 'Tidak berhak membatalkan reservasi ini' });
     }
-    
+
     // Cek apakah reservasi sudah selesai atau dibatalkan
     if (reservation.status === 'completed' || reservation.status === 'cancelled') {
-    return res.status(400).json({ message: `Reservasi sudah ${reservation.status}` });
+      return res.status(400).json({ message: `Reservasi sudah ${reservation.status}` });
     }
-    
+
     // Update status reservasi menjadi cancelled
     reservation.status = 'cancelled';
     await reservation.save();
-    
+
     // Cek apakah reservasi ini adalah yang sedang aktif untuk meja
     const now = new Date();
     const currentDate = now.toISOString().split('T')[0];
     const currentTime = now.toTimeString().split(' ')[0];
-    
+
     if (
-    reservation.reservation_date === currentDate &&
-    reservation.reservation_time <= currentTime &&
-    Sequelize.literal(`ADDTIME('${reservation.reservation_time}', SEC_TO_TIME(${reservation.duration} * 60)) > '${currentTime}'`)
+      reservation.reservation_date === currentDate &&
+      reservation.reservation_time <= currentTime &&
+      Sequelize.literal(`ADDTIME('${reservation.reservation_time}', SEC_TO_TIME(${reservation.duration} * 60)) > '${currentTime}'`)
     ) {
-    // Cek apakah ada reservasi aktif lain untuk meja ini
-    const activeReservation = await Reservation.findOne({
+      // Cek apakah ada reservasi aktif lain untuk meja ini
+      const activeReservation = await Reservation.findOne({
         where: {
-        table_id: reservation.table_id,
-        id: { [Op.ne]: reservation.id },
-        reservation_date: currentDate,
-        status: 'confirmed',
-        // Reservasi yang sedang berlangsung (waktu mulai <= sekarang <= waktu selesai)
-        [Op.and]: [
+          table_id: reservation.table_id,
+          id: { [Op.ne]: reservation.id },
+          reservation_date: currentDate,
+          status: 'confirmed',
+          // Reservasi yang sedang berlangsung (waktu mulai <= sekarang <= waktu selesai)
+          [Op.and]: [
             { reservation_time: { [Op.lte]: currentTime } },
             Sequelize.literal(`ADDTIME(reservation_time, SEC_TO_TIME(duration * 60)) > '${currentTime}'`)
-        ]
+          ]
         }
-    });
-    
-    // Update status meja menjadi available jika tidak ada reservasi aktif lainnya
-    if (!activeReservation) {
+      });
+
+      // Update status meja menjadi available jika tidak ada reservasi aktif lainnya
+      if (!activeReservation) {
         const table = await Table.findByPk(reservation.table_id);
         if (table) {
-        table.status = 'available';
-        await table.save();
+          table.status = 'available';
+          await table.save();
         }
+      }
     }
+
+    res.status(200).json({
+      message: 'Reservasi berhasil dibatalkan',
+      reservation
+    });
+  } catch (error) {
+    console.error('Error cancelling reservation:', error.response?.data || error.message);
+    
+    // Jika error dari Auth Service, kirim response yang lebih detail
+    if (error.response) {
+      return res.status(error.response.status).json({
+        message: 'Gagal memverifikasi user',
+        error: error.response.data
+      });
     }
     
-    res.status(200).json({
-    message: 'Reservasi berhasil dibatalkan',
-    reservation
-    });
-} catch (error) {
-    console.error('Error cancelling reservation:', error);
     res.status(500).json({ 
-    message: 'Gagal membatalkan reservasi', 
-    error: error.message || 'Unknown error'
+      message: 'Gagal membatalkan reservasi', 
+      error: error.message || 'Unknown error'
     });
-}
+  }
 };
 
 // 
